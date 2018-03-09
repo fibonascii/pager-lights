@@ -15,6 +15,8 @@ devices should work as well, and will be tested in the future
 
 Usage:
 
+from pagerdutyservice import ServiceThread
+
 PDService1 = ServiceThread(threadID=1,
                           serviceID='serviceID',
                           hostAddress='LIGHTIP',
