@@ -20,7 +20,7 @@ PDService1 = ServiceThread(threadID=1,
                           hostAddress='LIGHTIP',
                           authToken='AUTHTOKEN')
 <br>                          
-PDService2 = ServiceThread(threadID=1,
+PDService2 = ServiceThread(threadID=2,
                           serviceID='serviceID',
                           hostAddress='LIGHTIP',
                           authToken='AUTHTOKEN')                        
