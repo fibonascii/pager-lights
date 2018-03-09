@@ -18,9 +18,9 @@ Usage:
 PDService1 = ServiceThread(threadID=1,
                           serviceID='serviceID',
                           hostAddress='LIGHTIP',
-                          authToken='AUTHTOKEN')
+                          authToken='AUTHTOKEN').run()
 <br>                          
 PDService2 = ServiceThread(threadID=2,
                           serviceID='serviceID',
                           hostAddress='LIGHTIP',
-                          authToken='AUTHTOKEN')                        
+                          authToken='AUTHTOKEN').run()                        
