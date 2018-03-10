@@ -27,7 +27,7 @@ class ServiceThread(threading.Thread):
         header = {
                     'Authorization': 'Token token={}'.format(self.authToken)
                  }
-        url = "https://api.pagerduty.com/incidents?statuses%5B%5D=triggered&service_ids%5B%5D={}&time_zone=UTC&include%5B%5D=services".format(self.serviceID)
+        url = "https://api.pagerduty.com/incidents?statuses%5B%5D=triggered&statuses%5B%5D=acknowledged&service_ids%5B%5D={}&time_zone=UTC&include%5B%5D=services".format(self.serviceID)
 
         response = requests.get(url, headers=header)
         event = response.json()
