@@ -3,6 +3,7 @@
 from pyHS100 import SmartBulb
 import requests
 import threading
+import time
 
 class ServiceThread(threading.Thread):
     green = (120, 76, 80)
@@ -18,9 +19,9 @@ class ServiceThread(threading.Thread):
 
     def changeStatus(self, color):
         if self.bulb.is_color:
-            self.bulb.hsv = self.color
+            self.bulb.hsv = color
 
-        return self.color
+        return color
 
     def pollService(self, serviceID):
         header = {
@@ -31,14 +32,11 @@ class ServiceThread(threading.Thread):
         response = requests.get(url, headers=header)
         event = response.json()
         if event['incidents']:
-            self.changeStatus(ServiceThread.red)
+            self.changeStatus(self.red)
         else:
-            self.changeStatus(ServiceThread.green)
+            self.changeStatus(self.green)
 
     def run(self):
         while True:
-            try:
-                self.pollService(self.serviceID)
-                time.sleep(30)
-            except:
-                pass
+            self.pollService(self.serviceID)
+            time.sleep(30)
