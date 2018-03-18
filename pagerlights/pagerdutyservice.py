@@ -4,6 +4,7 @@ from pyHS100 import SmartBulb
 import requests
 import threading
 import time
+from exceptions import ConnectionError
 
 class ServiceThread(threading.Thread):
     green = (120, 76, 80)
@@ -20,6 +21,8 @@ class ServiceThread(threading.Thread):
     def changeStatus(self, color):
         if self.bulb.is_color:
             self.bulb.hsv = color
+        else:
+            raise ConnectionError("Can't connect to Smart Device")
 
         return color
 
